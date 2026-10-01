@@ -1,0 +1,92 @@
+--
+-- PostgreSQL database dump
+--
+
+\restrict noCd03rP3p9XJ36XnWppjRvi3E3MdVYWEOtoKnzegCY6JkS9323p8qYhpIqI6YQ
+
+-- Dumped from database version 18.1
+-- Dumped by pg_dump version 18.1
+
+-- Started on 2026-10-01 15:43:15
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2 (class 3079 OID 17427)
+-- Name: uuid-ossp; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
+
+--
+-- TOC entry 5022 (class 0 OID 0)
+-- Dependencies: 2
+-- Name: EXTENSION "uuid-ossp"; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
+
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 220 (class 1259 OID 17438)
+-- Name: frota_veiculos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.frota_veiculos (
+    id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+    modelo character varying NOT NULL,
+    marca character varying NOT NULL,
+    ano integer NOT NULL,
+    placa character varying NOT NULL
+);
+
+
+ALTER TABLE public.frota_veiculos OWNER TO postgres;
+
+--
+-- TOC entry 5016 (class 0 OID 17438)
+-- Dependencies: 220
+-- Data for Name: frota_veiculos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.frota_veiculos (id, modelo, marca, ano, placa) FROM stdin;
+dd3c9bb6-b0d2-4173-bdbe-7ee733640a10	f40	ferrari	2020	sd31hd
+2ed7a34b-d841-480d-940d-ad9b950a8162	puro sangue	ferrari	2026	fd54ns
+3930601c-59a4-4bac-9727-9a140073e68c	911 gts	porsche	2023	pr23gs
+67a59a2f-7d7a-48c5-a3df-571992d8931d	carrera	porsche	2022	cr22kj
+be842d9f-c727-470e-979d-83764b9824cb	camaro	chevrolet	2015	cm15sd
+\.
+
+
+--
+-- TOC entry 4868 (class 2606 OID 17450)
+-- Name: frota_veiculos frota_veiculos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.frota_veiculos
+    ADD CONSTRAINT frota_veiculos_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2026-10-01 15:43:15
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict noCd03rP3p9XJ36XnWppjRvi3E3MdVYWEOtoKnzegCY6JkS9323p8qYhpIqI6YQ
+
